@@ -23,11 +23,11 @@ A version of HHVM that implements the Xdebug API for code coverage (`xdebug_*_co
 
 ## Installation
 
-To add PHP_CodeCoverage as a local, per-project dependency to your project, simply add a dependency on `phpunit/php-code-coverage` to your project's `composer.json` file. Here is a minimal example of a `composer.json` file that just defines a dependency on PHP_CodeCoverage 3.0:
+To add PHP_CodeCoverage as a local, per-project dependency to your project, simply add a dependency on `phpunit/php-code-coverage` to your project's `composer.json` file. Here is a minimal example of a `composer.json` file that just defines a dependency on PHP_CodeCoverage 4.0:
 
     {
         "require": {
-            "phpunit/php-code-coverage": "^4"
+            "phpunit/php-code-coverage": "4.0.*"
         }
     }
 
@@ -35,16 +35,16 @@ To add PHP_CodeCoverage as a local, per-project dependency to your project, simp
 
 ```php
 <?php
-$coverage = new PHP_CodeCoverage;
+$coverage = new \SebastianBergmann\CodeCoverage\CodeCoverage();
 $coverage->start('<name of test>');
 
 // ...
 
 $coverage->stop();
 
-$writer = new PHP_CodeCoverage_Report_Clover;
+$writer = \SebastianBergmann\CodeCoverage\Report\Clover();
 $writer->process($coverage, '/tmp/clover.xml');
 
-$writer = new PHP_CodeCoverage_Report_HTML;
+$writer = new \SebastianBergmann\CodeCoverage\Report\Html\Facade();
 $writer->process($coverage, '/tmp/code-coverage-report');
 ```
